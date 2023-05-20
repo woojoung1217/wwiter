@@ -14,7 +14,7 @@ const Profile = ({ isLoggedIn }) => {
   };
   return (
     <>
-      <div>profile</div>
+      <div>My profile</div>
 
       <button onClick={onLogOutClick}>로그아웃</button>
       <button
