@@ -7,13 +7,19 @@ import Auth from "../Routes/Auth";
 import { Navigation } from "./Navigation";
 import Profile from "../Routes/Profile";
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <>
       <Routes>
         <Route
           path="/"
-          element={isLoggedIn ? <Home isLoggedIn={isLoggedIn} /> : <Auth />}
+          element={
+            isLoggedIn ? (
+              <Home isLoggedIn={isLoggedIn} userObj={userObj} />
+            ) : (
+              <Auth />
+            )
+          }
         ></Route>
         <Route
           path="/profile"
