@@ -1,7 +1,8 @@
 /* eslint-disable */
 
 import React, { useState } from "react";
-import { dbService } from "../fbase";
+import { deleteObject, ref } from "@firebase/storage";
+import { dbService, storageService } from "../fbase";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 const Nweet = ({ nweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -12,6 +13,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     const NweetTextRef = doc(dbService, "nweets", `${nweetObj.id}`);
     if (ok === true) {
       await deleteDoc(NweetTextRef);
+      await deleteObject(ref(storageService, nweetObj.attachmentUrl));
     }
   };
 

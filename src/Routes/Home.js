@@ -50,7 +50,6 @@ const Home = ({ isLoggedin, userObj }) => {
       //storage 참조 경로에 있는 파일의 URL을 다운로드해서 attachmentUrl 변수에 넣어서 업데이트
       attachmentUrl = await getDownloadURL(response.ref);
     }
-
     //트윗 오브젝트
     const nweetObj = {
       text: nweet,
@@ -58,13 +57,10 @@ const Home = ({ isLoggedin, userObj }) => {
       creatorId: userObj.uid,
       attachmentUrl,
     };
-
     //트윗하기 누르면 nweetObj 형태로 새로운 document 생성하여 nweets 콜렉션에 넣기
     await addDoc(collection(dbService, "nweets"), nweetObj);
-
     //state 비워서 form 비우기
     setNweet("");
-
     //파일 미리보기 img src 비워주기
     setAttachment("");
   };

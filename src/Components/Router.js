@@ -23,7 +23,9 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
         ></Route>
         <Route
           path="/profile"
-          element={isLoggedIn == true ? <Profile></Profile> : null}
+          element={
+            isLoggedIn == true ? <Profile userObj={userObj}></Profile> : null
+          }
         ></Route>
       </Routes>
     </>
