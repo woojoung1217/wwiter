@@ -3,7 +3,11 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ userObj }) => {
+  if (userObj.displayName === null) {
+    const name = userObj.email.split("@")[0];
+    userObj.displayName = name;
+  }
   return (
     <>
       <nav>
@@ -12,7 +16,7 @@ const Navigation = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/profile">My Profile</Link>
+            <Link to="/profile">{userObj.displayName} 님의 프로필</Link>
           </li>
         </ul>
       </nav>

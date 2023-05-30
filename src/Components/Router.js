@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Home from "../Routes/Home";
 import { Routes, Route, Link, Router } from "react-router-dom";
 import Auth from "../Routes/Auth";
-import { Navigation } from "./Navigation";
+import Navigation from "./Navigation";
 import Profile from "../Routes/Profile";
 
 const AppRouter = ({ isLoggedIn, userObj }) => {

@@ -92,7 +92,7 @@ const Home = ({ isLoggedin, userObj }) => {
   return (
     <div>
       <p> home </p>
-      <div>{!isLoggedin ? <Navigation /> : null}</div>
+      <div>{!isLoggedin ? <Navigation userObj={userObj} /> : null}</div>
 
       <form onSubmit={onSubmit}>
         <input
