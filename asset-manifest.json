@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/wwiter/static/css/main.3ed5958c.css",
+    "main.js": "/wwiter/static/js/main.b81f5dd5.js",
+    "index.html": "/wwiter/index.html",
+    "main.3ed5958c.css.map": "/wwiter/static/css/main.3ed5958c.css.map",
+    "main.b81f5dd5.js.map": "/wwiter/static/js/main.b81f5dd5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ed5958c.css",
+    "static/js/main.b81f5dd5.js"
+  ]
+}
