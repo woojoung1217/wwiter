@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/woojoung1217/wwiter/static/css/main.3ed5958c.css",
-    "main.js": "/woojoung1217/wwiter/static/js/main.08aa208f.js",
-    "index.html": "/woojoung1217/wwiter/index.html",
-    "main.3ed5958c.css.map": "/woojoung1217/wwiter/static/css/main.3ed5958c.css.map",
-    "main.08aa208f.js.map": "/woojoung1217/wwiter/static/js/main.08aa208f.js.map"
+    "main.css": "/wwiter/static/css/main.3ed5958c.css",
+    "main.js": "/wwiter/static/js/main.7b435508.js",
+    "index.html": "/wwiter/index.html",
+    "main.3ed5958c.css.map": "/wwiter/static/css/main.3ed5958c.css.map",
+    "main.7b435508.js.map": "/wwiter/static/js/main.7b435508.js.map"
   },
   "entrypoints": [
     "static/css/main.3ed5958c.css",
-    "static/js/main.08aa208f.js"
+    "static/js/main.7b435508.js"
   ]
 }
