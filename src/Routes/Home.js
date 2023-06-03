@@ -12,7 +12,8 @@ import {
 import Nweet from "../Components/Nweet";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 const Home = ({ isLoggedin, userObj }) => {
   //
   const [nweet, setNweet] = useState("");
@@ -35,6 +36,9 @@ const Home = ({ isLoggedin, userObj }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (nweet === "") {
+      return;
+    }
     let attachmentUrl = "";
 
     if (attachment !== "") {
@@ -89,33 +93,53 @@ const Home = ({ isLoggedin, userObj }) => {
   };
 
   return (
-    <div>
-      <p> home </p>
+    <div className="container">
       <div>{!isLoggedin ? <Navigation userObj={userObj} /> : null}</div>
 
-      <form onSubmit={onSubmit}>
-        <input
-          value={nweet}
-          onChange={onChange}
-          type="text"
-          placeholder="what did you do?"
-          maxLength={120}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={onFileChange}
-          ref={fileInput}
-        />
-        <input type="submit" value="Nweet" />
+      <form onSubmit={onSubmit} className="factoryForm">
+        <div className="factoryInput__container">
+          <input
+            className="factoryInput__input"
+            value={nweet}
+            onChange={onChange}
+            type="text"
+            placeholder="what did you do?"
+            maxLength={120}
+          />
+          <input
+            id="attach-file"
+            type="file"
+            accept="image/*"
+            onChange={onFileChange}
+            ref={fileInput}
+            style={{
+              opacity: 0,
+            }}
+          />
+          <input type="submit" value="Nweet" className="factoryInput__arrow" />
+        </div>
+
+        <label htmlFor="attach-file" className="factoryInput__label">
+          <span>Add photos</span>
+          <FontAwesomeIcon icon={faPlus} />
+        </label>
+
         {attachment && (
-          <div>
-            <img src={attachment} width="50px" height="50px" />
-            <button onClick={onClearAttachment}>Clear</button>
+          <div className="factoryForm__attachment">
+            <img
+              src={attachment}
+              style={{
+                backgroundImage: attachment,
+              }}
+            />
+            <div className="factoryForm__clear" onClick={onClearAttachment}>
+              <span>Remove</span>
+              <FontAwesomeIcon icon={faTimes} />
+            </div>
           </div>
         )}
       </form>
-      <div>
+      <div style={{ marginTop: 30 }}>
         {nweets.map((nweet) => (
           <Nweet
             key={nweet.id}

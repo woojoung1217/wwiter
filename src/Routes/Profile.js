@@ -3,11 +3,11 @@
 import { getAuth, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { dbService } from "../fbase";
+import { dbService, authService } from "../fbase";
 import { collection, getDocs, query, where } from "@firebase/firestore";
 import { updateProfile } from "@firebase/auth";
 import { Link } from "react-router-dom";
-const Profile = ({ isLoggedIn, userObj }) => {
+const Profile = ({ isLoggedIn, userObj, refreshUser }) => {
   const [newDisplayName, setNewDisPlayName] = useState(userObj.displayName);
   const navigate = useNavigate();
   const auth = getAuth();
@@ -34,36 +34,54 @@ const Profile = ({ isLoggedIn, userObj }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (userObj.displayName !== newDisplayName) {
-      await updateProfile(userObj, { displayName: newDisplayName });
+      await updateProfile(authService.currentUser, {
+        displayName: newDisplayName,
+      });
+      refreshUser();
     }
-    setNewDisPlayName();
+    alert("변경완료😃");
+    // e.preventDefault();
+    // if (userObj.displayName !== newDisplayName) {
+    //   await updateProfile(userObj, { displayName: newDisplayName });
+    // }
+    // setNewDisPlayName();
   };
   const onChange = (e) => {
     setNewDisPlayName(e.target.value);
   };
 
   return (
-    <>
-      <p>{userObj.displayName} 님의 프로필😃</p>
-      <form onSubmit={onSubmit}>
+    <div className="container">
+      <form onSubmit={onSubmit} className="profileForm">
         <input
-          type="text"
-          placeholder="Display Name"
           onChange={onChange}
+          type="text"
+          autoFocus
+          placeholder="Display name"
           value={newDisplayName}
-        ></input>
-        <input type="submit" value="update Profile"></input>
+          className="formInput"
+        />
+        <input
+          type="submit"
+          value="Update Profile"
+          className="formBtn"
+          style={{
+            marginTop: 10,
+          }}
+        />
       </form>
-
-      <button onClick={onLogOutClick}>로그아웃</button>
-      <button
+      <span
+        className="formBtn cancelBtn logOut"
         onClick={() => {
           navigate("/");
         }}
       >
-        돌아가기
-      </button>
-    </>
+        Back
+      </span>
+      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+        Log Out
+      </span>
+    </div>
   );
 };
 

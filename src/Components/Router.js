@@ -7,9 +7,18 @@ import Auth from "../Routes/Auth";
 import Navigation from "./Navigation";
 import Profile from "../Routes/Profile";
 
-const AppRouter = ({ isLoggedIn, userObj }) => {
+const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
-    <>
+    <div
+      style={{
+        maxWidth: 890,
+        width: "100%",
+        margin: "0 auto",
+        marginTop: 80,
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <Routes>
         <Route
           path="/"
@@ -24,11 +33,13 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
         <Route
           path="/profile"
           element={
-            isLoggedIn == true ? <Profile userObj={userObj}></Profile> : null
+            isLoggedIn == true ? (
+              <Profile userObj={userObj} refreshUser={refreshUser}></Profile>
+            ) : null
           }
         ></Route>
       </Routes>
-    </>
+    </div>
   );
 };
 
