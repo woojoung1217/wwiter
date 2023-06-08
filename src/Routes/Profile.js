@@ -14,6 +14,7 @@ const Profile = ({ isLoggedIn, userObj, refreshUser }) => {
   const onLogOutClick = () => {
     signOut(auth);
     navigate("/", { replace: true });
+    console.log("o");
   };
 
   const getMyNweets = async () => {
